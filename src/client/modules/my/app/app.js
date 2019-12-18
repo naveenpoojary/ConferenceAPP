@@ -1,4 +1,4 @@
-import { LightningElement, track} from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 export default class App extends LightningElement {
     @track sessionId;
@@ -6,24 +6,22 @@ export default class App extends LightningElement {
         this.sessionId = event.detail;
         this.state = 'details';
         window.history.pushState('details', null);
-      }
-      @track state;
-      constructor() {
+    }
+    @track state;
+    constructor() {
         super();
         this.state = 'list';
         window.history.replaceState('list', null, '');
         window.onpopstate = event => {
-          if (event.state) {
-            this.state = event.state;
-          }
+            if (event.state) {
+                this.state = event.state;
+            }
         };
-      }
-      get isStateList() {
-        return this.state === 'list';
-      }
-      get isStateDetails() {
-        return this.state === 'details';
-      }
     }
-
-    
+    get isStateList() {
+        return this.state === 'list';
+    }
+    get isStateDetails() {
+        return this.state === 'details';
+    }
+}
